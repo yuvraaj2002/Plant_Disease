@@ -123,6 +123,7 @@ celerybeat.pid
 .env
 .venv
 data/
+artifacts/
 env/
 venv/
 ENV/
