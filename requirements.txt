@@ -1,0 +1,7 @@
+tensorflow
+numpy
+streamlit
+datetime
+pathlib
+
+-e .
