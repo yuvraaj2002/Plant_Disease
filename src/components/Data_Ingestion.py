@@ -65,8 +65,8 @@ if __name__ == "__main__":
     healthy_imgs, unhealthy_imgs = data_ingestion.initialize_data_ingestion()
 
     # Now using the healthy_imgs and unhealthy_imgs path we will load the images in the tensorflow dataset and apply preprocessing
-    # data_transformation = DataProcessing()
-    # print(data_transformation.initialize_process_train('artifacts'))
+    data_transformation = DataProcessing()
+    print(data_transformation.initialize_process_train("artifacts/data/"))
 
     # modeltrainer = ModelTrainer()
     # print(modeltrainer.initiate_model_trainer(train_ds, val_ds))
