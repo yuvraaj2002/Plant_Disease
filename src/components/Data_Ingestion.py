@@ -3,12 +3,14 @@ import sys
 import shutil
 from src.logger import logging
 from src.exception import CustomException
+from src.components.Data_Processing import DataProcessing
+# from src.components.Model_training import ModelTrainer
 from dataclasses import dataclass
 
 @dataclass
 class DataIngestionConfig:
-    raw_data_path_class1: str = "artifacts/data/healthy/"
-    raw_data_path_class2: str = "artifacts/data/unhealthy/"
+    raw_data_path_class1: str = "artifacts/data/healthy_data/"
+    raw_data_path_class2: str = "artifacts/data/unhealthy_data/"
 
 
 class DataIngestion:
@@ -25,7 +27,9 @@ class DataIngestion:
             os.makedirs(self.ingestion_config.raw_data_path_class2, exist_ok=True)
 
             # Reading images from local directory, but here this resource could be anything
-            source_dir_path = "notebook/data/"
+            source_dir_path = os.path.join('notebook','data','')
+            
+            # Creating the list of subdirectories in teh main directory
             sub_dirs = [subdir for subdir in os.listdir(source_dir_path) if os.path.isdir(os.path.join(source_dir_path, subdir))]
 
             # Let's now iterate through each directory
@@ -59,3 +63,12 @@ class DataIngestion:
 if __name__ == "__main__":
     data_ingestion = DataIngestion()
     healthy_imgs, unhealthy_imgs = data_ingestion.initialize_data_ingestion()
+
+    # Now using the healthy_imgs and unhealthy_imgs path we will load the images in the tensorflow dataset and apply preprocessing
+    # data_transformation = DataProcessing()
+    # print(data_transformation.initialize_process_train('artifacts'))
+
+    # modeltrainer = ModelTrainer()
+    # print(modeltrainer.initiate_model_trainer(train_ds, val_ds))
+
+    
